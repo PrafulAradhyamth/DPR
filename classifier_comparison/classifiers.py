@@ -54,7 +54,7 @@ class KNearestNeighborClassifier:
             sorted_labels = np.argsort(distances)
 
             # TODO: take first k labels
-            knn_labels = y_train[sorted_labels[:self.k]]
+            knn_labels = self.y_train[sorted_labels[:self.k]]
             knn_labels = knn_labels.astype(int)
 
             # TODO: identify the most frequently occurring label (the function bincount of numpy may be helpful)
@@ -63,7 +63,7 @@ class KNearestNeighborClassifier:
             # save the label in array which should finally contain the labels for all test instances
             labels = np.append(labels, label)
 
-        return labels,knn_labels
+        return labels
 
 
 class GaussianMixtureModelClassifier:
