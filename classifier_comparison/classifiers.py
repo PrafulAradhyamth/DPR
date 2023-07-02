@@ -74,22 +74,22 @@ class GaussianMixtureModelClassifier:
     def fit(self, x_train, y_train):
         # fit one Gaussian mixture model to each class
         # TODO: Extract the training samples of class 0 and fit a Gaussian mixture model to them
-        x_train0 =
-        self.gmm0.
+        x_train0 = x_train[y_train == 0]
+        self.gmm0.fit(x_train0)
 
         # TODO: Extract the training samples of class 1 and fit a Gaussian mixture model to them
-        x_train1 =
-        self.gmm0.
+        x_train1 = x_train[y_train == 1]
+        self.gmm0.fit(x_train1)
 
     def predict(self, x_test):
         # maximum likelihood classification
         # TODO: Get the log-likelihoods of all test instances for both classes (meaning both Gaussian mixture models)
-        log_likelihood0 =
-        log_likelihood1 =
+        log_likelihood0 = self.gmm0.score_samples(x_test)
+        log_likelihood1 = self.gmm1.score_samples(x_test)
         # TODO: Use the log-likelihoods to compute the log-likelihood ratio for all test instances
-        log_likelihood_ratio =
+        log_likelihood_ratio = log_likelihood1 - log_likelihood0
         labels = np.zeros_like(x_test[:, 0])
         # TODO: Set the labels to 1 where to the log-likelihood ratio test for ML decision decides for class 1
-        labels[] = 1
+        labels[log_likelihood_ratio > 0] = 1
 
         return labels
