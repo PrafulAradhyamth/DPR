@@ -153,8 +153,9 @@ def circular_dataset(size, training_split):
     # create circular dataset
     # TODO: Use the function make_circles to generate the data. Thereby, set shuffle to False. Then scale the data and
     #       add two-dimensional standard normal distributed noise
-    data, labels =
-    data =
+
+    data, labels = make_circles(n_samples=size1, factor=0, random_state=42)
+    data = data * 4 + np.random.normal(0, 1, size=data.shape)
 
     # split dataset in train and test data
     data1 = data[:size1, :]
