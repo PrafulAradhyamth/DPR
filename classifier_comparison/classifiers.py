@@ -15,16 +15,16 @@ class NearestMeanClassifier:
         x_train1 = x_train[y_train == 1]
         mean1 = x_train1.mean(0)
         self.means = np.stack((mean0, mean1))
-
+    
     def predict(self, x_test):
         labels = np.array([], dtype=np.int32)
 
         for x in x_test:
             # TODO: calculate distances of test instance x to both means. Save result in a numpy array of the form
             #       [distance to mean 0, distance to mean 1]
-            distances = np.linalg.norm( - x)
+            distances = np.array([np.linalg.norm(self.means[0,:] - x), np.linalg.norm(self.means[1,:] - x)])
             # TODO: identify nearest mean
-            label =
+            label = np.argmax(distances)
             # save the label in array which should finally contain the labels for all test instances
             labels = np.append(labels, label)
 
