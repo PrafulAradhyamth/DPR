@@ -13,16 +13,16 @@ def two_moons_dataset(size, training_split):
     # split size in half
     size1 = math.floor(size / 2)
     size2 = math.ceil(size / 2)
-
+   
     # create first banana
     # TODO: Generate size1 samples for the first banana.
-    x1_banana1 =
-    x2_banana1 =
+    x1_banana1 = np.random.uniform(-2,6,size1)
+    x2_banana1 = -0.3 * (x1_banana1 - 2)**2 + 4 + 0.7 * np.random.standard_normal(size1)
 
     # create second banana
     # TODO: Generate size2 samples for the second banana.
-    x1_banana2 =
-    x2_banana2 =
+    x1_banana2 = np.random.uniform(-6,2,size2)
+    x2_banana2 = 0.3 * (x1_banana2 + 2)**2 - 4 + 0.7 * np.random.standard_normal(size2)
 
     # combine x1 and x2
     data1 = np.stack((x1_banana1, x2_banana1), axis=1)
