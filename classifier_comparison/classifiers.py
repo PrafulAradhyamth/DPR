@@ -9,11 +9,11 @@ class NearestMeanClassifier:
     def fit(self, x_train, y_train):
         # calculate means
         # TODO: Extract the training samples of class 0 and calculate their mean
-        x_train0 =
-        mean0 =
+        x_train0 = x_train[y_train == 0]
+        mean0 = x_train0.mean(0)
         # TODO: Extract the training samples of class 1 and calculate their mean
-        x_train1 =
-        mean1 =
+        x_train1 = x_train[y_train == 1]
+        mean1 = x_train1.mean(0)
         self.means = np.stack((mean0, mean1))
 
     def predict(self, x_test):
@@ -22,7 +22,7 @@ class NearestMeanClassifier:
         for x in x_test:
             # TODO: calculate distances of test instance x to both means. Save result in a numpy array of the form
             #       [distance to mean 0, distance to mean 1]
-            distances =
+            distances = np.linalg.norm( - x)
             # TODO: identify nearest mean
             label =
             # save the label in array which should finally contain the labels for all test instances
