@@ -47,7 +47,7 @@ class KNearestNeighborClassifier:
         for x in x_test:
             # TODO: calculate distances of test instance x to all training instances and save them all together in a
             #       numpy array
-            distances = np.linalg.norm(x_train - x , axis=1)
+            distances = np.linalg.norm(self.x_train - x , axis=1)
 
             # TODO: sort the labels of the training instances according to their distance to x (the function argsort of
             #       numpy may be helpful)
