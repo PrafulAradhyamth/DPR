@@ -79,7 +79,7 @@ class GaussianMixtureModelClassifier:
 
         # TODO: Extract the training samples of class 1 and fit a Gaussian mixture model to them
         x_train1 = x_train[y_train == 1]
-        self.gmm0.fit(x_train1)
+        self.gmm1.fit(x_train1)
 
     def predict(self, x_test):
         # maximum likelihood classification
