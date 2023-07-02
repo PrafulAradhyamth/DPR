@@ -59,14 +59,14 @@ def four_parallel_dataset(size, training_split):
     # create distributions
     # TODO: Generate the four distributions containing size1, size2, size3 and size4 samples, respectively. Thereby,
     #       dist1 and dist3 correspond to class 0 and dist2 and dist4 correspond to class 1.
-    x1_dist1 =
-    x2_dist1 =
-    x1_dist2 =
-    x2_dist2 =
-    x1_dist3 =
-    x2_dist3 =
-    x1_dist4 =
-    x2_dist4 =
+    x1_dist1 = np.random.normal( 0,  1 , size1)
+    x2_dist1 = np.random.uniform(-1,1,size1)
+    x1_dist2 = np.random.normal( 4,  1 , size1)
+    x2_dist2 = np.random.uniform(-1,1,size1)
+    x1_dist3 = np.random.normal( 8,  1 , size1)
+    x2_dist3 = np.random.uniform(-1,1,size1)
+    x1_dist4 = np.random.normal( 12,  1 , size1)
+    x2_dist4 = np.random.uniform(-1,1,size1)
 
     # combine x1 and x2
     data1 = np.stack((x1_dist1, x2_dist1), axis=1)
@@ -109,10 +109,16 @@ def four_gaussian_dataset(size, training_split):
     # create Gaussian distributions
     # TODO: Generate the four two-dimensional Gaussian distributions containing size1, size2, size3 and size4 samples,
     #       respectively. Thereby, data1 and data3 correspond to class 0 and data2 and data4 correspond to class 1.
-    data1 =
-    data2 =
-    data3 =
-    data4 =
+
+    mean1 = [2 , 2]
+    mean2 = [-2 , -2]
+    mean3 = [-2 , 2]
+    mean4 = [2 , -2]
+    cov = [[1, 0], [0, 1]]
+    data1 = np.random.multivariate_normal(mean1, cov, size1)
+    data2 = np.random.multivariate_normal(mean2, cov, size2)
+    data3 = np.random.multivariate_normal(mean3, cov, size3)
+    data4 = np.random.multivariate_normal(mean4, cov, size4)
 
     # create labels
     labels1 = np.zeros_like(data1[:, 0])
